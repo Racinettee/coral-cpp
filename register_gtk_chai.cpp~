@@ -1,0 +1,50 @@
+#include <gtk/gtk.h>
+// -----------------
+#include <chaiscript/chaiscript.hpp>
+#include <chaiscript/utility/utility.hpp>
+// --------------------------------------
+//#include "include/SourceWindow.hpp"
+
+const std::string wdg_get_name(GtkWidget* w)
+{
+  return std::string(gtk_widget_get_name(w));
+}
+GtkScrolledWindow* scrolledSrcView()
+{
+  GtkScrolledWindow* scrolled_win = gtk_scrolled_window_new();
+  gtk_widget_set_halign(scrolled_win, GTK_ALIGN_FILL);
+  gtk_widget_set_valign(scrolled_win, GTK_ALIGN_FILL);
+}
+void register_gtk_chai(chaiscript::ChaiScript& chai)
+{
+  using namespace chaiscript;
+
+  auto m = ModulePtr(new Module);
+
+  utility::add_class<GtkWidget>(*m,
+    "GtkWidget",
+    {
+    },
+    {
+      {fun<void(*)(GtkWidget*)>(gtk_widget_show), "show"},
+      {fun<void(*)(GtkWidget*)>(gtk_widget_hide), "hide"},
+      {fun<int(*)(GtkWidget*)>(gtk_widget_activate), "activate"},
+      {fun(wdg_get_name), "get_name"},
+      {fun([=](GtkWidget* w) { return w; }), "="}
+    }
+  );
+  chai.add(m);
+
+  m = ModulePtr(new Module);
+
+  utility::add_class<SourceWindow>(*m,
+    "SourceWindow",
+    {
+      constructor<SourceWindow()>(),
+      constructor<SourceWindow(const SourceWindow&)>
+    }
+    {
+      fun(&SourceWindow::view, "view");
+    }
+  );
+}

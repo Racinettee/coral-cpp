@@ -1,0 +1,16 @@
+GtkApplicationWindow {
+	background: -gtk-gradient (radial,
+               center center, 0,
+               center center, 1,
+               from(coral), to(white))
+}
+GtkNotebook {
+	background: rgba(255,255,255, 0.35);
+	border: none;
+}
+GtkNotebook:active {
+	background: rgba(255,255,255, 0.8);
+}
+GtkSourceView {
+	background: rgba(255,255,255,0.25);
+}

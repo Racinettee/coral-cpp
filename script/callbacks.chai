@@ -1,0 +1,48 @@
+// This is the callbacks file for Coral
+//var notebook = builder.get_object("notebook2")
+
+// This method is called at the beginning
+def widget_test(widget)
+{
+	widget.Hide()
+}
+
+def on_menu_file_new_tab_activate(widget)
+{
+	puts("On new tab activated\n")
+	
+	var w = builder.GetWidget("menu_file_quit")
+	w.Show()
+	//var newwin = SourceWindow()
+	//notebook.append_page(newwin)
+}
+
+def on_menu_open_file_activate(widget)
+{
+	puts("On open file activated\n")
+}
+
+def on_menu_file_save_activate(widget)
+{
+	puts("On save file activated\n")
+}
+
+def on_menu_file_saveas_activate(widget)
+{
+	puts("On save as activated\n")
+}
+
+def on_edit_choose_font_activate(widget)
+{
+	puts("On edit choose font activated\n")
+}
+
+def on_view_activate(widget)
+{
+	puts("On view activated\n")
+}
+
+def on_menu_show_lineno_toggled(widget)
+{
+	puts("On show line num toggled\n")
+}
