@@ -4,9 +4,7 @@
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 
-/// GtkPP is a looser wrapper than gtkmm. It does not attempt to manage the ref
-/// count as does gtkmm as it does not assume that you want a widget to be
-/// deleted when a handle to one of these wrapper objects goes out of scope.
+/// GtkPP does not deal with reference counting automatically atm
 namespace GtkPP
 {
   class Widget
