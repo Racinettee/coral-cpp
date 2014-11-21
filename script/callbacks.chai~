@@ -1,20 +1,12 @@
 // This is the callbacks file for Coral
-//var notebook = builder.get_object("notebook2")
-
-// This method is called
-def widget_test(widget)
-{
-	widget.Hide()
-}
+var notebook = builder.GetWidget("notebook2").AsNotebook()
 
 def on_menu_file_new_tab_activate(widget)
 {
 	puts("On new tab activated\n")
-	
-	var w = builder.GetWidget("menu_file_quit")
-	w.Show()
-	//var newwin = SourceWindow()
-	//notebook.append_page(newwin)
+	var newwin = Sourcewindow()
+	notebook.AppendPage(newwin)
+	notebook.CurrentPage(-1)
 }
 
 def on_menu_open_file_activate(widget)

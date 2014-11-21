@@ -33,19 +33,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add option="-Iinclude" />
-			<Add option="`pkg-config --cflags gtk+-3.0`" />
 			<Add option="`pkg-config --cflags gtksourceview-3.0`" />
 		</Compiler>
 		<Linker>
-			<Add option="`pkg-config --libs gtk+-3.0`" />
 			<Add option="`pkg-config --libs gtksourceview-3.0`" />
+			<Add option="-L./" />
 			<Add library="dl" />
+			<Add library="ChaiExtension" />
 		</Linker>
 		<Unit filename="include/GtkPP.hpp" />
 		<Unit filename="include/SharedFile.hpp" />
 		<Unit filename="include/SourceWindow.hpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="register_gtk_chai.cpp" />
 		<Unit filename="script/callbacks.chai" />
 		<Extensions>
 			<envvars />

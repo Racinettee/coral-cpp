@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1416467810 source:/home/steve/Project/Coral/main.cpp
+1416551663 source:/home/steve/Project/Coral/main.cpp
 	<vector>
 	<string>
 	<memory>
@@ -2575,7 +2575,7 @@
 1406649620 /usr/include/gtk-3.0/gtk/deprecated/gtkvseparator.h
 	<gtk/gtkseparator.h>
 
-1416467973 source:/home/steve/Project/Coral/register_gtk_chai.cpp
+1416526089 source:/home/steve/Project/Coral/register_gtk_chai.cpp
 	<gtk/gtk.h>
 	<chaiscript/chaiscript.hpp>
 	<chaiscript/utility/utility.hpp>
@@ -2716,10 +2716,11 @@
 	<gtksourceview/gtksourcegutterrenderer.h>
 	<gtksourceview/gtksourceview.h>
 
-1416379016 /home/steve/Project/Coral/include/SourceWindow.hpp
+1416518804 /home/steve/Project/Coral/include/SourceWindow.hpp
 	"GtkPP.hpp"
 
-1416468669 /home/steve/Project/Coral/include/GtkPP.hpp
+1416558054 /home/steve/Project/Coral/include/GtkPP.hpp
+	<sstream>
 	<gtk/gtk.h>
 	<gtksourceview/gtksource.h>
 

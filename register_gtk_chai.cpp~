@@ -3,34 +3,58 @@
 #include <chaiscript/chaiscript.hpp>
 #include <chaiscript/utility/utility.hpp>
 // --------------------------------------
-//#include "include/SourceWindow.hpp"
+#include <gtksourceview/gtksource.h>
+#include "include/SourceWindow.hpp"
 
-const std::string wdg_get_name(GtkWidget* w)
-{
-  return std::string(gtk_widget_get_name(w));
-}
-GtkScrolledWindow* scrolledSrcView()
-{
-  GtkScrolledWindow* scrolled_win = gtk_scrolled_window_new();
-  gtk_widget_set_halign(scrolled_win, GTK_ALIGN_FILL);
-  gtk_widget_set_valign(scrolled_win, GTK_ALIGN_FILL);
-}
 void register_gtk_chai(chaiscript::ChaiScript& chai)
 {
+  using namespace GtkPP;
   using namespace chaiscript;
 
   auto m = ModulePtr(new Module);
 
-  utility::add_class<GtkWidget>(*m,
+  utility::add_class<Widget>(*m,
     "GtkWidget",
+    {
+      constructor<Widget()>(),
+      constructor<Widget(const Widget&)>()
+    },
+    {
+      {fun(&Widget::Show), "Show"},
+      {fun(&Widget::Hide), "Hide"},
+      //{fun(gtk_widget_activate), "activate"},
+      {fun(&Widget::Name), "Name"},
+      {fun(&Widget::operator=), "="},
+      {fun(AsNotebook), "AsNotebook"},
+      {fun(AsContainer), "AsContainer"},
+      {fun(AsScrolledWindow), "AsScrolledWindow"}
+    }
+  );
+  chai.add(m);
+
+  m = ModulePtr(new Module);
+
+  utility::add_class<Container>(*m,
+    "GtkContainer",
     {
     },
     {
-      {fun<void(*)(GtkWidget*)>(gtk_widget_show), "show"},
-      {fun<void(*)(GtkWidget*)>(gtk_widget_hide), "hide"},
-      {fun<int(*)(GtkWidget*)>(gtk_widget_activate), "activate"},
-      {fun(wdg_get_name), "get_name"},
-      {fun([=](GtkWidget* w) { return w; }), "="}
+      {fun(&Container::Add), "Add"},
+      {fun(&Container::Remove), "Remove"}
+    }
+  );
+
+  chai.add(m);
+
+  m = ModulePtr(new Module);
+
+  utility::add_class<ScrolledWindow>(*m,
+    "GtkScrolledWindow",
+    {
+      constructor<ScrolledWindow()>()
+    },
+    {
+      {fun(&ScrolledWindow::GetChild), "Child"}
     }
   );
   chai.add(m);
@@ -38,13 +62,55 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
   m = ModulePtr(new Module);
 
   utility::add_class<SourceWindow>(*m,
-    "SourceWindow",
+    "Sourcewindow",
     {
       constructor<SourceWindow()>(),
-      constructor<SourceWindow(const SourceWindow&)>
-    }
+      constructor<SourceWindow(const SourceWindow&)>()
+    },
     {
-      fun(&SourceWindow::view, "view");
+      {fun(&SourceWindow::GetChild), "SrcView"}
     }
   );
+  chai.add(m);
+
+  m = ModulePtr(new Module);
+
+  utility::add_class<Builder>(*m,
+    "GtkBuilder",
+    {
+    },
+    {
+      {fun(&Builder::GetWidget), "GetWidget"}
+    }
+  );
+  chai.add(m);
+
+  //m = ModulePtr(new Module);
+  auto n = ModulePtr(new Module);
+
+  utility::add_class<Notebook>(*n,
+    "GtkNotebook",
+    {
+      constructor<Notebook()>(),
+      constructor<Notebook(const Notebook&)>()
+    },
+    {
+      {fun(&Notebook::AppendPage), "AppendPage"},
+      {fun<int(Notebook::*)()>(&Notebook::CurrentPage), "CurrentPage"},
+      {fun<void(Notebook::*)(int)>(&Notebook::CurrentPage), "CurrentPage"},
+      {fun(&Notebook::GetNthPage), "GetNthPage"},
+      {fun(&Notebook::ShowTabs), "ShowTabs"},
+      {fun(&Notebook::NPages), "NPages"},
+      {fun(&Notebook::GetScrollable), "GetScrollable"},
+      {fun(&Notebook::SetScrollable), "SetScrollable"}
+    }
+  );
+  chai.add(n);
+
+  chai.add(chaiscript::base_class<Widget, Container>());
+  chai.add(chaiscript::base_class<Widget, Notebook>());
+  chai.add(chaiscript::base_class<Container, Notebook>());
+  chai.add(chaiscript::base_class<Container,ScrolledWindow>());
+  chai.add(chaiscript::base_class<Widget, SourceWindow>());
+  chai.add(chaiscript::base_class<ScrolledWindow, SourceWindow>());
 }

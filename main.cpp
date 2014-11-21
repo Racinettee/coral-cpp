@@ -49,10 +49,6 @@ public:
     LoadStyle();
     BuildWindow();
     gtk_widget_show(GTK_WIDGET(window));
-
-    menu_quit = GTK_WIDGET(
-      gtk_builder_get_object(builder,"menu_file_quit"));
-    chai.eval<event_type>("widget_test")(menu_quit);
   }
   chaiscript::ChaiScript chai;
 private:
