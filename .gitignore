@@ -2,3 +2,5 @@
 *.o
 obj
 bin
+Debug
+Release
