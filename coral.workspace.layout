@@ -2,5 +2,6 @@
 <CodeBlocks_workspace_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveProject path="Coral.cbp" />
-	<EditorTabsLayout layout="06085600546efa8f011b630d00000002=0;Coral:main.cpp,1;Coral:include/GtkPP.hpp,*2;ChaiExtension:src/register_gtk_chai.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=557;besth=239;minw=557;minh=239;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=06085600546efa8f011b630d00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<PreferredTarget name="Debug" />
+	<EditorTabsLayout layout="05791c8054deb38000f16a0300000002=*0;Coral:main.cpp,1;Coral:include/GtkPP.hpp,2;ChaiExtension:src/register_gtk_chai.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=557;besth=239;minw=557;minh=239;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=05791c8054deb38000f16a0300000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_workspace_layout_file>

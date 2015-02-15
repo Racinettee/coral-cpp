@@ -7,8 +7,8 @@
 // ----------------
 #include <gtk/gtk.h>
 // -----------------
-#include <chaiscript/chaiscript.hpp>
-#include <chaiscript/chaiscript_stdlib.hpp>
+#include "chaiscript/chaiscript.hpp"
+#include "chaiscript/chaiscript_stdlib.hpp"
 // -------------------
 #include <SharedFile.hpp>
 // -------------------
@@ -83,7 +83,7 @@ void wrapper(GtkWidget* w, void* n)
   auto index = reinterpret_cast<decltype(methods)::size_type>(n);
   DBG_ONLY( cout <<  index << endl; );
 
-  methods[index](w);//methods[index](Glib::wrap(w));
+  methods.at(index)(w);//[index](w);//methods[index](Glib::wrap(w));
 }
 extern "C" void signal_connector(GtkBuilder *builder, GObject *object, const gchar *signal_name,
   const gchar *handler_name, GObject *connect_object, GConnectFlags flags, gpointer user_data)

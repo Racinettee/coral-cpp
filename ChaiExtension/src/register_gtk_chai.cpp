@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 // -----------------
-#include <chaiscript/chaiscript.hpp>
-#include <chaiscript/utility/utility.hpp>
+#include "chaiscript/chaiscript.hpp"
+#include "chaiscript/utility/utility.hpp"
 // --------------------------------------
 #include <gtksourceview/gtksource.h>
 #include "SourceWindow.hpp"
@@ -30,9 +30,9 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
       {fun(AsScrolledWindow), "AsScrolledWindow"}
     }
   );
-  chai.add(m);
+  //chai.add(m);
 
-  m = ModulePtr(new Module);
+  //m = ModulePtr(new Module);
 
   utility::add_class<Container>(*m,
     "GtkContainer",
@@ -44,9 +44,9 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
     }
   );
 
-  chai.add(m);
+  //chai.add(m);
 
-  m = ModulePtr(new Module);
+  //m = ModulePtr(new Module);
 
   utility::add_class<ScrolledWindow>(*m,
     "GtkScrolledWindow",
@@ -57,9 +57,9 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
       {fun(&ScrolledWindow::GetChild), "Child"}
     }
   );
-  chai.add(m);
+  //chai.add(m);
 
-  m = ModulePtr(new Module);
+  //m = ModulePtr(new Module);
 
   utility::add_class<SourceWindow>(*m,
     "Sourcewindow",
@@ -71,9 +71,9 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
       {fun(&SourceWindow::GetChild), "SrcView"}
     }
   );
-  chai.add(m);
+  //chai.add(m);
 
-  m = ModulePtr(new Module);
+  //m = ModulePtr(new Module);
 
   utility::add_class<Builder>(*m,
     "GtkBuilder",
@@ -83,11 +83,11 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
       {fun(&Builder::GetWidget), "GetWidget"}
     }
   );
-  chai.add(m);
+  //chai.add(m);
 
-  auto n = ModulePtr(new Module);
+  //auto n = ModulePtr(new Module);
 
-  utility::add_class<Notebook>(*n,
+  utility::add_class<Notebook>(*m,
     "GtkNotebook",
     {
       constructor<Notebook()>(),
@@ -104,7 +104,7 @@ void register_gtk_chai(chaiscript::ChaiScript& chai)
       {fun(&Notebook::SetScrollable), "SetScrollable"}
     }
   );
-  chai.add(n);
+  chai.add(m);
 
   chai.add(chaiscript::base_class<Widget, Container>());
   chai.add(chaiscript::base_class<Widget, Notebook>());

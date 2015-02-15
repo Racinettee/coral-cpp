@@ -43,7 +43,6 @@
 			<envvars />
 			<code_completion />
 			<lib_finder>
-				<lib name="chaiscript" />
 				<lib name="gtksourceview-3.0" />
 			</lib_finder>
 			<debugger />
